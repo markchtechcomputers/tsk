@@ -1,0 +1,26 @@
+<div class="card">
+  <h3>T-Shirt</h3>
+  <p>KES 1500</p>
+
+  <input type="text" id="phone" placeholder="2547XXXXXXXX">
+  <button onclick="payNow()">Pay with M-Pesa</button>
+</div>
+
+<script>
+function payNow() {
+  const phone = document.getElementById("phone").value;
+
+  fetch("https://your-backend-url/pay", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      phone: phone,
+      amount: 1500
+    })
+  })
+  .then(res => res.json())
+  .then(data => alert("Check your phone to complete payment"));
+}
+</script>
